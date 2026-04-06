@@ -1,0 +1,147 @@
+import java.util.*;
+class Book{
+    private String bookName;
+    private String author;
+    private String genre;
+    private boolean onShelf;
+
+    public Book(String bookName, String author, String genre){
+	this.bookName = bookName;
+	this.author = author;
+	this.genre = genre;
+	this.onShelf = true;
+    }
+
+    public String getBookName(){
+	return bookName;
+    }
+    public String getAuthor(){
+	return author;
+    }
+    public String getGenre(){
+	return genre;
+    }
+    public boolean onShelf(){
+	return onShelf;
+    }
+    public void borrow(){
+	onShelf = false;
+    }
+    public void returnBook(){
+	onShelf = true;
+    }
+}
+
+class Student{
+    private String matricNo;
+    private String name;
+
+    public Student(String matricNo, String name){
+	this.matricNo = matricNo;
+	this.name = name;
+    }
+    public String getMatricNo(){
+	return matricNo;
+    }
+    public String getName(){
+	return name;
+    }
+}
+
+class Lend{
+    private Book book;
+    private Student student;
+
+    public Lend(Book book, Student student){
+	this.book = book;
+	this.student = student;
+    }
+    public Book getBook(){
+	return book;
+    }
+    public Student getStudent(){
+	return student();
+    }
+}
+
+class LibMan{
+    //public static void main(String args[]){
+    private ArrayList<Book> books;
+    private ArrayList<Student> students;
+    private ArrayList<Lend> lend;
+
+    public LibMan(){
+	books = new ArrayList<>();
+	students = new ArrayList<>();
+	borrow = new ArrayList<>();
+    }
+    public void addBook(Book book){
+	books.add(book);
+    }
+    public void addStudent(Student student){
+	students.add(student);
+    }
+
+    public void lendBook(Book book, Student student, int days){
+	if(book.onShelf()){
+	    book.borrow();
+	    lend.add(new Lend(book, student, days));
+	}
+	else{
+	    System.out.println("Book is not on shelf rigth now");
+	}
+    }
+
+    public void returnBook(Book book){
+	book.returnBook();
+	Lend lendToRemove = null;
+	for(Lend lend : lends){
+	    if(lend.getBook() == book){
+		lendToRemove = lend;
+		break;
+	    }
+	}
+	if(lendToRemove != null){
+	    lends.remove(lendToRemove);
+	    System.out.println("Book returned succesfullly");
+	}
+	else{
+	    System.out.println("Book wasn't borrowed");
+	}
+    }
+
+    public void ui(){
+	Scanner input = new Scanner(System.in);
+
+	while(true){
+	    System.out.printf("------ Library Management System ------%n1. Borrow a Book%n2. Return a Book%3. Exit%nEnter your choice: ");
+
+	    int in = input.nextInt();
+
+	    if(in == 1){
+		System.out.printf("%n--- Borrow a Book ---%nEnter your name: ");
+		String studentName = in.next();
+
+		System.out.printf("%nBooks on Shelf:%n");
+		for(Book book : books){
+		    if(car.onShelf()){
+			System.out.printf("%s - %s - %s", book.getBookName(), book.getAuthor(), book.getGenre());
+		    }
+		}
+
+		System.out.printf("%nEnter the name of the book you want to borrow: ");
+		String bookName = in.next();
+
+		Student newStudent = new Student("STUD" + (students.size() + 1), studentName);
+		addStudent(newStudent);
+
+		Book selectedBook = null;
+		for(Book book : books){
+		    if (book.getBookName().equals(bookName) && book.onShelf()){
+			selectedBook = book;
+			break;
+		    }
+		}
+
+		if(selectedBook !r null){
+		    double
